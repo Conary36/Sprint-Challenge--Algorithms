@@ -118,48 +118,35 @@ class SortingRobot:
         """
         Returns True if the robot's light is on and False otherwise.
         """
-        if self._light == "ON":
-            return True
-        else:
-            return False
+        # if self._light == "ON":
+        #     return True
+        # else:
+        #     return False
 
         return self._light == "ON"
+
+    def sort_helper(self):
+        self.pickup()
+        while self.can_move_right():
+            self.move_right()
+            if self.compare_item() > 0:
+                self.swap_item()
+
+        while self.can_move_left():
+            self.move_left()
+            if self.compare_item() == None:
+                self.swap_item()
+                if self.can_move_right():
+                    self.move_right()
+                    break
 
     def sort(self):
         """
         Sort the robot's list.
         """
         # Fill this out
-
-        self.pickup()
         while self.can_move_right():
-            self.move_right()
-            if self.compare_item() > 0:
-                self.swap_item()
-        while self.can_move_left():
-            if self.compare_item() == None:
-                self.swap_item()
-
-        while self.can_move_right():
-            if self.compare_item() != None:
-                if self.compare_item() > 0:
-                    # next item is smaller
-                    self.swap_item()
-                    while self.can_move_left():
-                        self.move_left()
-                        if self.compare_item() == None:
-                            self.swap_item()
-                            break
-
-            elif self._item == None:
-                self.pickup()
-
-            self.move_right()
-
-        if self._item != None:
-           self.swap_item()
-
-
+            self.sort_helper()
 
 
 if __name__ == "__main__":

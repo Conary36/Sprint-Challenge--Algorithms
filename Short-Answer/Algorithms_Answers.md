@@ -25,7 +25,6 @@ While eggs are dropped,
 For floors greater than mid level,
 check if eggs are broken,
 if broken decrement,
-if not broken add to basket,
 For Floors less than mid level,
 check if eggs are not broken,
 if not broken add to basket
