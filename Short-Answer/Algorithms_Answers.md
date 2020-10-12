@@ -14,10 +14,18 @@ b)
     simplifying the constants equates to O(n)
 
 c)
-    If bunnies == 0 is a constant of O(1)
-    n will decrement by 1 and increased by 2 O(1)
+     bunnies == 0 is a constant of O(1)
+    n will decrement by 1 and increase by 2 O(1)
     simplified to be a constant O(1)
 
 ## Exercise II
 
 
+While eggs are dropped,
+For floors greater than mid level,
+check if eggs are broken,
+if broken decrement,
+if not broken add to basket,
+For Floors less than mid level,
+check if eggs are not broken,
+if not broken add to basket
