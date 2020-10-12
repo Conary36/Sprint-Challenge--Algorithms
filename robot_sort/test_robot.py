@@ -15,7 +15,7 @@ class Test(unittest.TestCase):
         robot = SortingRobot(self.small_list)
         robot.sort()
         self.assertEqual(robot._list, sorted(self.small_list))
-
+'''
     def test_sorting_medium_list(self):
         robot = SortingRobot(self.medium_list)
         robot.sort()
@@ -55,7 +55,7 @@ class Test(unittest.TestCase):
     #     robot.sort()
     #     print(robot._time)
     #     self.assertLess(robot._time, 28308)
-
+'''
 
 if __name__ == '__main__':
     unittest.main()

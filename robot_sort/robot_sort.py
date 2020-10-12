@@ -14,6 +14,9 @@ class SortingRobot:
         Returns True if the robot can move right or False if it's
         at the end of the list.
         """
+
+        return self._position < len(self._list) -1
+
         # for i in range(0, len(self._list)):
         # mid = self._list // 2
         if self._position < len(self._list) - 1:
@@ -62,17 +65,24 @@ class SortingRobot:
         else:
             return False
 
+    def pickup(self) :
+        if self._item == None:
+            self._item = self._list[self._position]
+            self._list[self._position] = None
+        else:
+            self.swap_item()
+
     def swap_item(self):
         """
         The robot swaps its currently held item with the list item in front
         of it.
         This will increment the time counter by 1.
         """
-        if self._item == self._position:
-            self._time += 1
-            # Swap the held item with the list item at the robot's position
-            self._item, self._list[self._position] = self._list[self._position], self._item
-            return self._item
+
+        self._time += 1
+        # Swap the held item with the list item at the robot's position
+        self._item, self._list[self._position] = self._list[self._position], self._item
+        return self._item
 
     def compare_item(self):
         """
@@ -108,6 +118,11 @@ class SortingRobot:
         """
         Returns True if the robot's light is on and False otherwise.
         """
+        if self._light == "ON":
+            return True
+        else:
+            return False
+
         return self._light == "ON"
 
     def sort(self):
@@ -115,7 +130,36 @@ class SortingRobot:
         Sort the robot's list.
         """
         # Fill this out
-        pass
+
+        self.pickup()
+        while self.can_move_right():
+            self.move_right()
+            if self.compare_item() > 0:
+                self.swap_item()
+        while self.can_move_left():
+            if self.compare_item() == None:
+                self.swap_item()
+
+        while self.can_move_right():
+            if self.compare_item() != None:
+                if self.compare_item() > 0:
+                    # next item is smaller
+                    self.swap_item()
+                    while self.can_move_left():
+                        self.move_left()
+                        if self.compare_item() == None:
+                            self.swap_item()
+                            break
+
+            elif self._item == None:
+                self.pickup()
+
+            self.move_right()
+
+        if self._item != None:
+           self.swap_item()
+
+
 
 
 if __name__ == "__main__":
