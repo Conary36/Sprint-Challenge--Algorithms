@@ -10,13 +10,12 @@ a)
 b)
     The sum is a constant of O(1)
     For loop is O(1), J = 1 is O(1)
-    While loop is O(1) J *= 2 is O(2n)
-    simplifying the constants equates to O(n)
+    While loop is O(n) J *= 2 is O(log n)
+    simplifying the constants equates to O(n log n)
 
 c)
-     bunnies == 0 is a constant of O(1)
-    n will decrement by 1 and increase by 2 O(1)
-    simplified to be a constant O(1)
+    n will decrement by 1 and increase by 2 O(n)
+    simplified to be a constant O(n)
 
 ## Exercise II
 
